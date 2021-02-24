@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kGyt8ovGhMDJrnKDstOPAJsWGtWLonBcv0602U4gHw5Toj0d8H3+X83Gbdv3lQCxd30nuNfdfIwolD3OUEFmAw==",
+  "dgSpecHash": "e90qW0gP5/2jMuJmrllQiUC62mMeSx0yQXQQvar9U4OpP9H78AZ2etMRKSuFfhg5MfODoigEXgIB5JS/7H7+rQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\jocm\\My Private Documents\\codes\\Estudos ASP.NET Core\\Projeto API Aula Valdir Ferreira\\Data\\Data.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\jocm\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.0\\microsoft.entityframeworkcore.analyzers.5.0.0.nupkg.sha512",
     "C:\\Users\\jocm\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.0\\microsoft.entityframeworkcore.design.5.0.0.nupkg.sha512",
     "C:\\Users\\jocm\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.0\\microsoft.entityframeworkcore.relational.5.0.0.nupkg.sha512",
+    "C:\\Users\\jocm\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.0\\microsoft.entityframeworkcore.tools.5.0.0.nupkg.sha512",
     "C:\\Users\\jocm\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\jocm\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
     "C:\\Users\\jocm\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",

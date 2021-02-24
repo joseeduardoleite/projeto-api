@@ -6,7 +6,7 @@ namespace Data.Config
 {
     public class ContextBase : IdentityDbContext<ApplicationUser>
     {
-        public ContextBase(DbContextOptions options) : base(options) { }
+        public ContextBase(DbContextOptions<ContextBase> options) : base(options) { }
 
         public DbSet<Product> Produto { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
@@ -28,7 +28,7 @@ namespace Data.Config
 
         private string GetStringConnectionConfig()
         {
-            string connectionString = "server=localhost;port=3306;database=projetoapi;uid=root;password=root";
+            string connectionString = "Server=localhost;Port=3306;Database=projetoapi;Uid=root;Pwd=root";
 
             return connectionString;
         }
