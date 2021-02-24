@@ -1,12 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,6 +23,8 @@ namespace WebAPI
             Configuration = configuration;
         }
 
+        public readonly string CorsPolicy = "_corsPolicy";
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -41,10 +38,17 @@ namespace WebAPI
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
                     
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ContextBase>();
+                    .AddEntityFrameworkStores<ContextBase>();
 
             services.AddSingleton(typeof(IGeneric<>), typeof(GenericsRepository<>));
             services.AddSingleton<IProduct, ProductRepository>();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(CorsPolicy, builder => builder.WithOrigins("http://localhost:4200", "http://localhost:4200")
+                                                                .AllowAnyHeader()
+                                                                .AllowAnyMethod());
+            });
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => 
             {
@@ -79,6 +83,10 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(builder => builder.AllowAnyOrigin()
+                                          .AllowAnyMethod()
+                                          .AllowAnyHeader());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -90,10 +98,13 @@ namespace WebAPI
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCors("*");
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -104,6 +115,8 @@ namespace WebAPI
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+
+                endpoints.MapControllers().RequireCors(CorsPolicy);
             });
         }
     }

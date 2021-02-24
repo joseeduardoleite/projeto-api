@@ -2,10 +2,12 @@ using System.Threading.Tasks;
 using Data.Entities;
 using Data.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
+    [EnableCors("CorsApi")]
     [Authorize]
     public class ProductApiController : Controller
     {

@@ -1,12 +1,14 @@
 using System.Threading.Tasks;
 using Data.Entities;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Token;
 
 namespace WebAPI.Controllers
 {
+    [EnableCors("CorsApi")]
     public class TokenController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
