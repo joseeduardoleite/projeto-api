@@ -7,9 +7,9 @@ namespace Data.Repository
 {
     public class ProductRepository : GenericsRepository<Product>, IProduct
     {
-        // public Task<List<Product>> CustomList()
-        // {
-            
-        // }
+        public Task<List<Product>> CustomList()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

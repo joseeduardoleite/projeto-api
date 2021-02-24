@@ -46,34 +46,34 @@ namespace WebAPI
             services.AddSingleton(typeof(IGeneric<>), typeof(GenericsRepository<>));
             services.AddSingleton<IProduct, ProductRepository>();
 
-            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => 
-            // {
-            //     options.TokenValidationParameters = new TokenValidationParameters 
-            //     {
-            //         ValidateIssuer = false,
-            //         ValidateAudience = false,
-            //         ValidateLifetime = true,
-            //         ValidateIssuerSigningKey = true,
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => 
+            {
+                options.TokenValidationParameters = new TokenValidationParameters 
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
 
-            //         ValidIssuer = "Test.Security.Bearer",
-            //         ValidAudience = "Test.Security.Bearer",
-            //         IssuerSigningKey = JwtSecurityKey.Create("Secret-Key-12345678")
-            //     };
+                    ValidIssuer = "Test.Security.Bearer",
+                    ValidAudience = "Test.Security.Bearer",
+                    IssuerSigningKey = JwtSecurityKey.Create("Secret-Key-12345678")
+                };
 
-            //     options.Events = new JwtBearerEvents
-            //     {
-            //         OnAuthenticationFailed = context =>
-            //         {
-            //             Console.WriteLine("OnAuthenticationFailed: " + context.Exception.Message);
-            //             return Task.CompletedTask;
-            //         },
-            //         OnTokenValidated = context =>
-            //         {
-            //             Console.WriteLine("OnTokenValidated: " + context.SecurityToken);
-            //             return Task.CompletedTask;
-            //         }
-            //     };
-            // });
+                options.Events = new JwtBearerEvents
+                {
+                    OnAuthenticationFailed = context =>
+                    {
+                        Console.WriteLine("OnAuthenticationFailed: " + context.Exception.Message);
+                        return Task.CompletedTask;
+                    },
+                    OnTokenValidated = context =>
+                    {
+                        Console.WriteLine("OnTokenValidated: " + context.SecurityToken);
+                        return Task.CompletedTask;
+                    }
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
