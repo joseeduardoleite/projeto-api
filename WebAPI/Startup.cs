@@ -57,7 +57,7 @@ namespace WebAPI
 
                     ValidIssuer = "Test.Security.Bearer",
                     ValidAudience = "Test.Security.Bearer",
-                    IssuerSigningKey = JwtSecurityKey.Create("Secret-Key-12345678")
+                    IssuerSigningKey = JwtSecurityKey.Create("Secret_Key-12345678")
                 };
 
                 options.Events = new JwtBearerEvents
