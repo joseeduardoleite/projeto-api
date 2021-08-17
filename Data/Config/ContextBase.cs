@@ -28,7 +28,7 @@ namespace Data.Config
 
         private string GetStringConnectionConfig()
         {
-            string connectionString = "Server=localhost;Port=3306;Database=projetoapi;Uid=root;Pwd=root";
+            string connectionString = "Server=;Port=;Database=;Uid=;Pwd=";
 
             return connectionString;
         }
